@@ -8,7 +8,9 @@ environment:
 
 dependencies:
   shared_preferences: ^2.0.4
-  smooth_star_rating: ^1.1.1
+  smooth_star_rating:
+    git:
+      url: git@github.com:educup/smoothratingbar.git
   pedantic: ^1.11.0
   flutter:
     sdk: flutter

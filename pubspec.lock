@@ -159,10 +159,12 @@ packages:
   smooth_star_rating:
     dependency: "direct main"
     description:
-      name: smooth_star_rating
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
+      path: "."
+      ref: HEAD
+      resolved-ref: "4c5c5d3800c9b81a4015f030ff11a1b6b6384191"
+      url: "git@github.com:educup/smoothratingbar.git"
+    source: git
+    version: "2.0.0"
   typed_data:
     dependency: transitive
     description:

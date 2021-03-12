@@ -207,7 +207,7 @@ class RateMyAppStarDialogState extends State<RateMyAppStarDialog> {
             ),
           ),
           SmoothStarRating(
-            onRated: (rating) {
+            onRatingChanged: (rating) {
               setState(() => _currentRating = rating);
             },
             color: widget.starRatingOptions.starsFillColor,

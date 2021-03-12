@@ -97,8 +97,13 @@ class RateMyApp {
   }
 
   /// Returns whether native review dialog is supported.
-  Future<bool?> get isNativeReviewDialogSupported =>
-      _channel.invokeMethod<bool>('isNativeDialogSupported');
+  Future<bool> get isNativeReviewDialogSupported async {
+    var result = await _channel.invokeMethod<bool>('isNativeDialogSupported');
+    if (result == null) {
+      return false;
+    }
+    return result;
+  }
 
   /// Launches the native review dialog.
   /// You should check for [isNativeReviewDialogSupported] before running the method.
@@ -121,7 +126,7 @@ class RateMyApp {
     VoidCallback? onDismissed,
   }) async {
     ignoreNativeDialog ??= Platform.isAndroid;
-    if (!ignoreNativeDialog && await (isNativeReviewDialogSupported as Future<bool>)) {
+    if (!ignoreNativeDialog && await isNativeReviewDialogSupported) {
       unawaited(callEvent(RateMyAppEventType.iOSRequestReview));
       await launchNativeReviewDialog();
       return;
@@ -165,7 +170,7 @@ class RateMyApp {
     VoidCallback? onDismissed,
   }) async {
     ignoreNativeDialog ??= Platform.isAndroid;
-    if (!ignoreNativeDialog && await (isNativeReviewDialogSupported as Future<bool>)) {
+    if (!ignoreNativeDialog && await isNativeReviewDialogSupported) {
       unawaited(callEvent(RateMyAppEventType.iOSRequestReview));
       await launchNativeReviewDialog();
       return;

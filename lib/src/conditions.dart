@@ -38,12 +38,12 @@ class MinimumDaysCondition extends DebuggableCondition {
   final int remindDays;
 
   /// The minimum date required to meet this condition.
-  DateTime minimumDate;
+  late DateTime minimumDate;
 
   /// Creates a new minimum days condition instance.
   MinimumDaysCondition({
-    @required this.minDays,
-    @required this.remindDays,
+    required this.minDays,
+    required this.remindDays,
   })  : assert(minDays != null),
         assert(remindDays != null);
 
@@ -92,7 +92,7 @@ class MinimumDaysCondition extends DebuggableCondition {
   String _addZeroIfNeeded(int number) => number.toString().padLeft(2, '0');
 
   /// Returns the current date with the minimum days added.
-  DateTime _now([Duration toAdd]) =>
+  DateTime _now([Duration? toAdd]) =>
       DateTime.now().add(toAdd ?? Duration(days: minDays));
 }
 
@@ -105,12 +105,12 @@ class MinimumAppLaunchesCondition extends DebuggableCondition {
   final int remindLaunches;
 
   /// Number of app launches.
-  int launches;
+  int launches = 0;
 
   /// Creates a new minimum app launches condition instance.
   MinimumAppLaunchesCondition({
-    @required this.minLaunches,
-    @required this.remindLaunches,
+    required this.minLaunches,
+    required this.remindLaunches,
   })  : assert(minLaunches != null),
         assert(remindLaunches != null);
 
@@ -157,7 +157,7 @@ class MinimumAppLaunchesCondition extends DebuggableCondition {
 /// The do not open again condition.
 class DoNotOpenAgainCondition extends DebuggableCondition {
   /// Whether the dialog should not be opened again.
-  bool doNotOpenAgain;
+  late bool doNotOpenAgain;
 
   @override
   void readFromPreferences(
